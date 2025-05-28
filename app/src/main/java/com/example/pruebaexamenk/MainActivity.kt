@@ -20,10 +20,11 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.pruebaexamenk.ui.components.navigation.Destinations
 import com.example.pruebaexamenk.ui.components.navigation.NavGraph
-import com.example.pruebaexamenk.ui.components.navigation.getBottomBarForRoute
 import com.example.pruebaexamenk.ui.components.navigation.getTopBarForRoute
 import com.example.pruebaexamenk.ui.theme.PruebaExamenKTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,10 +65,6 @@ fun App(){
             Box(modifier = Modifier.padding(padding)) {
                 NavGraph(navController)
             }
-        },
-        bottomBar = {
-            val bottomBarContent = getBottomBarForRoute(currentRoute, navController)
-            bottomBarContent?.invoke()
         }
     )
 }
