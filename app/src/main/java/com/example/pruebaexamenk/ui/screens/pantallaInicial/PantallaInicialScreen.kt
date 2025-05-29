@@ -41,6 +41,7 @@ fun PantallaInicialScreen(
     var showDialog by remember { mutableStateOf(false) }
     var title by remember { mutableStateOf("") }
     var body by remember { mutableStateOf("") }
+    var editingPost by remember { mutableStateOf<Posts?>(null) }
 
     LaunchedEffect(Unit) {
         PantallaInicialViewModel.getPosts()
@@ -60,6 +61,12 @@ fun PantallaInicialScreen(
                         },
                         onDelete = {
                             PantallaInicialViewModel.deletePost(post.id)
+                        },
+                        onEdit = {
+                            editingPost = post
+                            title = post.title
+                            body = post.body
+                            showDialog = true
                         }
                     )
                 }
@@ -82,12 +89,17 @@ fun PantallaInicialScreen(
                         onDismissRequest = { showDialog = false },
                         confirmButton = {
                             TextButton(onClick = {
-                                PantallaInicialViewModel.createPost(title, body)
+                                if (editingPost != null) {
+                                    PantallaInicialViewModel.updatePost(editingPost!!.id, title, body)
+                                } else {
+                                    PantallaInicialViewModel.createPost(title, body)
+                                }
                                 showDialog = false
+                                editingPost = null
                                 title = ""
                                 body = ""
                             }) {
-                                Text("Añadir")
+                                Text(if (editingPost != null) "Actualizar" else "Añadir")
                             }
                         },
                         dismissButton = {

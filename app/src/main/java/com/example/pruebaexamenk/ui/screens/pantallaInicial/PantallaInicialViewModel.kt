@@ -45,4 +45,17 @@ class PantallaInicialViewModel @Inject constructor (
         }
     }
 
+    fun updatePost(id: Int, title: String, body: String) {
+        viewModelScope.launch {
+            val updatedPost = Posts(userId = 1, id = id, title = title, body = body)
+            val result = provideRepository.putPost(id, updatedPost)
+            if (result != null) {
+                posts = posts.map {
+                    if (it.id == id) result else it
+                }
+            }
+        }
+    }
+
+
 }

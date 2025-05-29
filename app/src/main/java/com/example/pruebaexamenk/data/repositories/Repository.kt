@@ -50,4 +50,16 @@ class Repository {
             }
         }
     }
+
+    suspend fun putPost(id: Int, post: Posts): Posts? {
+        return withContext(Dispatchers.IO) {
+            val response = RetrofitInstance.jsonplaceholder.putPost(id, post).execute()
+            if (response.isSuccessful) {
+                response.body()
+            } else {
+                null
+            }
+        }
+    }
+
 }

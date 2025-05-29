@@ -4,6 +4,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -12,7 +13,7 @@ import androidx.compose.ui.unit.dp
 import com.example.pruebaexamenk.data.model.Posts
 
 @Composable
-fun List(post: Posts, onClick: () -> Unit, onDelete: () -> Unit) {
+fun List(post: Posts, onClick: () -> Unit, onDelete: () -> Unit, onEdit: () -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -28,11 +29,13 @@ fun List(post: Posts, onClick: () -> Unit, onDelete: () -> Unit) {
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                IconButton(onClick = onDelete) {
-                    Icon(
-                        imageVector = Icons.Default.Delete,
-                        contentDescription = "Eliminar producto"
-                    )
+                Row {
+                    IconButton(onClick = onDelete) {
+                        Icon(imageVector = Icons.Default.Delete, contentDescription = "Eliminar post")//Primer tipo de icono
+                    }
+                    IconButton(onClick = onEdit) {
+                        Icon(Icons.Default.Edit, contentDescription = "Editar post")//Segundo tipo de icono
+                    }
                 }
 
                 Text(text = post.title, style = MaterialTheme.typography.bodyLarge)
