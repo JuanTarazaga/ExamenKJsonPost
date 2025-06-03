@@ -44,17 +44,6 @@ fun App(){
     val navController = rememberNavController()
     val navBackStackEntry = navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry.value?.destination?.route
-    val showFAB = remember { mutableStateOf(true) }
-
-    // Lista de destinos donde el FAB debe desaparecer
-    val hideFABDestinations = listOf(
-        Destinations.PANTALLA_INICIAL,
-        Destinations.PANTALLA_SECUNDARIA
-    )
-
-    LaunchedEffect(currentRoute) {
-        showFAB.value = currentRoute !in hideFABDestinations
-    }
 
     Scaffold (modifier = Modifier.fillMaxSize(),
         topBar = {

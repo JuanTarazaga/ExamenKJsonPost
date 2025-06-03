@@ -31,10 +31,10 @@ fun List(post: Posts, onClick: () -> Unit, onDelete: () -> Unit, onEdit: () -> U
             ) {
                 Row {
                     IconButton(onClick = onDelete) {
-                        Icon(imageVector = Icons.Default.Delete, contentDescription = "Eliminar post")//Primer tipo de icono
+                        Icon(imageVector = Icons.Default.Delete, contentDescription = "Eliminar post")
                     }
                     IconButton(onClick = onEdit) {
-                        Icon(Icons.Default.Edit, contentDescription = "Editar post")//Segundo tipo de icono
+                        Icon(Icons.Default.Edit, contentDescription = "Editar post")
                     }
                 }
 

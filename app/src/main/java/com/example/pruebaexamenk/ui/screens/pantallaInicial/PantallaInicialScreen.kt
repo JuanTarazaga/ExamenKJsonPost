@@ -107,7 +107,7 @@ fun PantallaInicialScreen(
                                 Text("Cancelar")
                             }
                         },
-                        title = { Text("Nuevo Post") },
+                        title = { Text("Editar/Añadir Post") },
                         text = {
                             Column {
                                 OutlinedTextField(
@@ -121,7 +121,7 @@ fun PantallaInicialScreen(
                                     value = body,
                                     onValueChange = { body = it },
                                     label = { Text("Contenido") },
-                                    maxLines = 5
+                                    maxLines = 10
                                 )
                             }
                         }

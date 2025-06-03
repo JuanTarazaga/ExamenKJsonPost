@@ -3,9 +3,7 @@ package com.example.pruebaexamenk.ui.components
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -21,7 +19,7 @@ fun Description(post: Posts) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(
                 text = post.title,
-                style = MaterialTheme.typography.bodyLarge
+                style = MaterialTheme.typography.titleLarge
             )
 
             Box(modifier = Modifier.padding(16.dp))
@@ -30,6 +28,10 @@ fun Description(post: Posts) {
         }
 
         Column(modifier = Modifier.padding(16.dp)) {
+            Text(
+                text = "Contenido: ",
+                style = MaterialTheme.typography.labelLarge
+            )
 
             Text(
                 modifier = Modifier.padding(16.dp),
